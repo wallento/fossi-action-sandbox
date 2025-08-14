@@ -9,8 +9,15 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.random-number }}
+
+
 runs:
   using: "composite"
+  pre:
+    - name: Init
+      run: echo "Hello setup"
+      shell: bash
+    
   steps:
     - name: Set Greeting
       run: echo "Hello $INPUT_WHO_TO_GREET."
